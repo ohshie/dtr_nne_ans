@@ -30,7 +30,7 @@ jobs:
           
       - name: Ping
         run: |
-         ansible all -i "${{secrets.SERVER_ADDR}}" --private-key private_key.pem -m ping
+         ansible all "${{secrets.SERVER_ADDR}}" --private-key private_key.pem -m ping
          
       - name: Clean up
         run: rm -f private_key.pem
