@@ -23,19 +23,15 @@ jobs:
         run: |
           sudo apt install -y ansible
 
-      - name: Create Inventory File
-        run: |
-          echo "${{ secrets.SERVER_ADDR }} ansible_ssh_common_args='-o StrictHostKeyChecking=no'" > inventory.ini
-
       - name: Create ssh key, disable key checking
         run: |
           echo "${{ secrets.SERVER_KEY }}" > private_key
           chmod 600 private_key
           export ANSIBLE_HOST_KEY_CHECKING=False
-          
+
       - name: Ping
         run: |
-         ansible all -i inventory.ini --private-key private_key -m ping
-         
+          ansible all -m ping
+
       - name: Clean up
-        run: rm -f private_key.pem inventory.ini
+        run: rm -f private_key.pem
