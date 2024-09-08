@@ -21,9 +21,17 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Ansible
         run: |
-          sudo apt update
           sudo apt install -y ansible
 
+      - name: Create ssh key
+        run: |
+          echo "${{ secrets.SERVER_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          
       - name: Ping
         run: |
-         ansible all -i '${{secrets.SERVER_ADDR}}' --private-key <(echo -n '${{secrets.SERVER_KEY}}') -m ping
+         ansible all -i "${{secrets.SERVER_ADDR}}" --private-key private_key.pem -m ping
+
+          post:
+            - name: Clean up
+              run: rm -f private_key.pem
