@@ -29,13 +29,13 @@ jobs:
 
       - name: Create ssh key, disable key checking
         run: |
-          echo "${{ secrets.SERVER_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
+          echo "${{ secrets.SERVER_KEY }}" > private_key
+          chmod 600 private_key
           export ANSIBLE_HOST_KEY_CHECKING=False
           
       - name: Ping
         run: |
-         ansible all -i inventory.ini --private-key private_key.pem -m ping
+         ansible all -i inventory.ini --private-key private_key -m ping
          
       - name: Clean up
         run: rm -f private_key.pem inventory.ini
