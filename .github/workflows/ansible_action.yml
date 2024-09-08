@@ -23,6 +23,10 @@ jobs:
         run: |
           sudo apt install -y ansible
 
+      - name: Create Inventory File
+        run: |
+          echo "${{ secrets.SERVER_ADDR }}" > inventory.ini
+
       - name: Create ssh key
         run: |
           echo "${{ secrets.SERVER_KEY }}" > private_key.pem
@@ -30,7 +34,7 @@ jobs:
           
       - name: Ping
         run: |
-         ansible all "${{secrets.SERVER_ADDR}}" --private-key private_key.pem -m ping
+         ansible all -i inventory.ini --private-key private_key.pem -m ping
          
       - name: Clean up
-        run: rm -f private_key.pem
+        run: rm -f private_key.pem inventory.ini
