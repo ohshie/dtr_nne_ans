@@ -27,10 +27,11 @@ jobs:
         run: |
           echo "${{ secrets.SERVER_ADDR }}" > inventory.ini
 
-      - name: Create ssh key
+      - name: Create ssh key, disable key checking
         run: |
           echo "${{ secrets.SERVER_KEY }}" > private_key.pem
           chmod 600 private_key.pem
+          export ANSIBLE_HOST_KEY_CHECKING=False
           
       - name: Ping
         run: |
