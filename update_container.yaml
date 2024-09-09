@@ -4,6 +4,8 @@
   tasks:
     - block:
         - name: Git pull
+          debug:
+            msg: "{{ lookup('env', 'SERVICE_REPO') }}"
           git:
             repo: "{{ lookup('env', 'SERVICE_REPO') }}"
             dest: ~/dtr_NeuralNewsEditor
