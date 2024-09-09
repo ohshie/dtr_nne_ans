@@ -9,6 +9,3 @@
           dest: ~/dtr_NeuralNewsEditor
           clone: no
           update: yes
-
-  args:
-    chdir: ~/dtr_NeuralNewsEditor
