@@ -4,7 +4,7 @@
   tasks:
     - block:
         - name: Check if container is running
-          shell: docker ps -a --filter "name={{ lookup('env', 'DOCKER_NAME') }}" --format "{{.Names}}"
+          shell: docker ps -a --filter "name={{ lookup('env', 'DOCKER_NAME') }}"
           register: container_status
           changed_when: false
 
