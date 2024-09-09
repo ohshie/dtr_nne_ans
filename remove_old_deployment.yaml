@@ -5,17 +5,15 @@
     - block:
         - name: Stop Current Container
           community.docker.docker_container:
-            name: ${{lookup('env', 'DOCKER_NAME')}}
-            image: ignore
+            name: "${{lookup('env', 'DOCKER_NAME')}}"
             state: stopped
 
-        - name: Stop Current Container
+        - name: Remove Current Container
           community.docker.docker_container:
-            name: ${{lookup('env', 'DOCKER_NAME')}}
-            image: ignore
+            name: "${{lookup('env', 'DOCKER_NAME')}}"
             state: absent
 
         - name: Remove Current Image
           community.docker.docker_image:
-            name: ${{lookup('env', 'DOCKER_NAME')}}
+            name: "${{lookup('env', 'DOCKER_NAME')}}"
             state: absent
