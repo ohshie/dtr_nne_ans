@@ -1,5 +1,8 @@
 - name: Setup Docker if it's not installed
   import_playbook: install_docker.yaml
 
-- name: Pull from Git and re-create container
-  import_playbook: update_container.yaml
+- name: Pull from Git
+  import_playbook: pull_changes_from_git.yaml
+
+- name: Recreate Docker Container
+  ansible.builtin.import_playbook: recreate_container.yaml
