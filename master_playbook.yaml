@@ -2,5 +2,8 @@
 - hosts: all
   become: true
 
-- name: Master playbook to run all other playbooks
+- name: set up docker if it's not installed
   import_playbook: install_docker.yaml
+
+- name: pull from git and re-create container
+  import_playbook: update_container.yaml
