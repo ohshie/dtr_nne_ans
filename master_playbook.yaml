@@ -1,8 +1,9 @@
-- hosts: all
+- name: Setup Docker if it's not installed
+  hosts: all
   become: true
-
-- name: set up docker if it's not installed
   import_playbook: install_docker.yaml
 
-- name: pull from git and re-create container
+- name: Pull from Git and re-create container
+  hosts: all
+  become: true
   import_playbook: update_container.yaml
