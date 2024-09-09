@@ -6,11 +6,9 @@
         - name: Stop Current Container
           community.docker.docker_container:
             name: ${{lookup('env', 'DOCKER_NAME')}}
-            state: stopped
-        - name: Remove Current Container
-          community.docker.docker_container:
-            name: ${{lookup('env', 'DOCKER_NAME')}}
-            stae: absent
+            image: ignore
+            state: absent
+
         - name: Remove Current Image
           community.docker.docker_image:
             name: ${{lookup('env', 'DOCKER_NAME')}}
