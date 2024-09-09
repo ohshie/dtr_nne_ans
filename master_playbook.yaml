@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: true
+
+- name: Master playbook to run all other playbooks
+  import_playbook: install_docker.yaml

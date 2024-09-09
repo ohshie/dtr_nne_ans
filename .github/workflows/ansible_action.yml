@@ -35,7 +35,7 @@ jobs:
 
       - name: Ping
         run: |
-          ansible-playbook install_docker.yaml
+          ansible-playbook master_playbook.yaml
 
       - name: Clean up
         run: rm -f private_key.pem
