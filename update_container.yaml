@@ -5,11 +5,11 @@
     - block:
         - name: Git pull
           git:
-            repo: "{{ lookup('env', 'SERVICE_REPO') }}"
+            repo: "{{ lookup('env', 'REPOSITORY_ADDR' ) }}"
             dest: ~/dtr_NeuralNewsEditor
             clone: no
             update: yes
       rescue:
         - name: Handle failure when pulling Git repository
           debug:
-            msg: "Git pull failed. Check the repository URL and credentials. {{ lookup('env', 'SERVICE_REPO') }}"
+            msg: "Git pull failed. Check the repository URL and credentials. {{ lookup('env', 'REPOSITORY_ADDR') }}"
