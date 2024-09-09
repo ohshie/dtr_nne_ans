@@ -5,7 +5,7 @@
     - block:
         - name: Debug
           community.general.docker_container:
-            name: "${{lookup('env', 'DOCKER_NAME')}}"
+            name: dtr_nne
             state: healthy
 
         - name: Remove Current Container
