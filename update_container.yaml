@@ -5,10 +5,13 @@
     - block:
         - name: Git pull
           git:
-            repo: "{{ lookup('env', 'REPOSITORY_ADDR' ) }}"
-            dest: ~/dtr_NeuralNewsEditor
+            repo: "{{ lookup('env', 'REPOSITORY_ADDR') }}"
+            dest: /home/ubuntu/dtr_NeuralNewsEditor
             clone: no
             update: yes
+          environment:
+            GIT_TRACE: 1
+            GIT_CURL_VERBOSE: 1
       rescue:
         - name: Handle failure when pulling Git repository
           debug:
