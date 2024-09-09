@@ -5,7 +5,7 @@
     - block:
         name: Git pull
         git:
-          repo: { { github.GITHUB_REPO } }
+          repo: "{{ lookup('env', 'SERVICE_REPO') }}"
           dest: ~/dtr_NeuralNewsEditor
           clone: no
           update: yes
