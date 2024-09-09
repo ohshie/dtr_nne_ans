@@ -4,5 +4,8 @@
 - name: Pull from Git
   import_playbook: pull_changes_from_git.yaml
 
-- name: Recreate Docker Container
-  ansible.builtin.import_playbook: recreate_container.yaml
+- name: Remove old Docker Container and Image
+  ansible.builtin.import_playbook: remove_old_deployment.yaml
+
+- name: Create New Docker Image and Start Container
+  import_playbook: create_new_deployment.yaml
