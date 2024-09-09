@@ -4,16 +4,16 @@
   tasks:
     - block:
         - name: Debug
-          community.docker.docker_container:
+          community.general.docker_container:
             name: "${{lookup('env', 'DOCKER_NAME')}}"
             state: healthy
 
         - name: Remove Current Container
-          community.docker.docker_container:
+          community.general.docker_container:
             name: "${{lookup('env', 'DOCKER_NAME')}}"
             state: absent
 
         - name: Remove Current Image
-          community.docker.docker_image:
+          community.general.docker_image:
             name: "${{lookup('env', 'DOCKER_NAME')}}"
             state: absent
