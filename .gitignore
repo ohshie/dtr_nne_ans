@@ -2,3 +2,4 @@
 create_new_deployment_local.yaml
 remove_old_deployment_local.yaml
 inventory_local
+master_playbook_local.yaml
