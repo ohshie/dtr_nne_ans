@@ -1,0 +1,16 @@
+- name: Installing Required Packages On Remote Machine
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Packages Block
+      block:
+        - name: Install Docker Package
+          ansible.builtin.apt:
+            name: docker
+            state: present
+
+        - name: Install Git Package
+          ansible.builtin.apt:
+            name: git
+            state: present

@@ -1,5 +1,6 @@
 .vscode/settings.json
-create_new_deployment_local.yaml
-remove_old_deployment_local.yaml
+create_new_deployment_local.yml
+remove_old_deployment_local.yml
 inventory_local
-master_playbook_local.yaml
+master_playbook_local.yml
+pull_changes_from_git_local.yml

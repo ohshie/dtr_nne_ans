@@ -1,0 +1,11 @@
+- name: Import Ansible Collections
+  hosts: localhost
+
+  tasks:
+    - name: Colection block
+      block:
+        - name: Import Docker Collection
+          ansible.builtin.command:
+            cmd: ansible-galaxy install -r requirements.yml
+          args:
+            creates: Docker collection

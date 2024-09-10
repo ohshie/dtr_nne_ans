@@ -1,0 +1,17 @@
+- name: Docker Container and Image Clean Up
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Clean Up Block
+      block:
+        - name: Remove Old Container
+          community.docker.docker_container:
+            name: ${{ lookup('env', 'DOCKER_NAME') }}
+            state: absent
+
+        - name: Remove Old Image
+          community.docker.docker_image:
+            name: ${{ lookup('env', 'DOCKER_NAME') }}
+            state: absent
+            tag: latest

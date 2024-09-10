@@ -1,0 +1,25 @@
+- name: Creating New Image And Starting Container
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Deployment Block
+      block:
+        - name: Creating New Image
+          community.docker.docker_image:
+            name: ${{ lookup('env', 'REPO_NAME') }}
+            build:
+              path: "${{ lookup('env', 'WORK_FOLDER') }}${{ lookup('env', 'REPO_NAME') }}"
+              dockerfile: "${{ lookup('env', 'REPO_NAME') }}/Dockerfile"
+              nocache: true
+            source: build
+
+        - name: Start Container
+          community.docker.docker_container:
+            name: ${{ lookup('env', 'DOCKER_NAME') }}
+            image: ${{ lookup('env', 'DOCKER_NAME') }}
+            state: started
+            volumes:
+              - "${{ lookup('env', 'DOCKER_VOLUME') }}"
+            ports:
+              - "${{ lookup('env', 'DOCKER_PORTS') }}"

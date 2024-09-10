@@ -1,0 +1,14 @@
+- name: Import Collection
+  ansible.builtin.import_playbook: import_collection.yml
+
+- name: Install Packages
+  ansible.builtin.import_playbook: install_packages.yml
+
+- name: Pull Changes From Git
+  ansible.builtin.import_playbook: pull_changes_from_git.yml
+
+- name: Remove Old Deployment
+  ansible.builtin.import_playbook: remove_old_deployment.yml
+
+- name: Create New Deployment
+  ansible.builtin.import_playbook: create_new_deployment.yml

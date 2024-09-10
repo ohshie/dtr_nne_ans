@@ -1,0 +1,12 @@
+- name: Pull From Git
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Pull From Git
+      ansible.builtin.git:
+        repo: "{{ lookup('env', 'REPOSITORY_ADDR') }}"
+        dest: "{{ lookup('env', 'SYSTEM_FOLDER') }}/{{ lookup('env', 'REPO_NAME') }}"
+        clone: false
+        update: true
+        version: master
