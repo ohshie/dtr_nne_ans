@@ -7,11 +7,11 @@
       block:
         - name: Remove Old Container
           community.docker.docker_container:
-            name: ${{ lookup('env', 'DOCKER_NAME') }}
+            name: "{{ lookup('env', 'DOCKER_NAME') }}"
             state: absent
 
         - name: Remove Old Image
           community.docker.docker_image:
-            name: ${{ lookup('env', 'DOCKER_NAME') }}
+            name: "{{ lookup('env', 'DOCKER_NAME') }}"
             state: absent
             tag: latest
