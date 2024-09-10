@@ -35,7 +35,7 @@ jobs:
 
       - name: Update service
         run: |
-          ansible-playbook master_playbook.yaml
+          ansible-playbook -i inventory master_playbook.yaml
         env:
           REPOSITORY_ADDR: "https://${{secrets.ACCESS_TOKEN}}@github.com/${{secrets.REPO_USER}}/${{ secrets.SERVICE_REPO }}"
           WORK_FOLDER: ${{secrets.WORK_FOLDER}}
@@ -43,5 +43,6 @@ jobs:
           SERVICE_REPO: ${{ secrets.SERVICE_REPO }}
           DOCKER_VOLUME: ${{ secrets.DOCKER_VOLUME }}
           DOCKER_PORTS: ${{secrets.DOCKER_PORTS}}
+
       - name: Clean up
         run: rm -f private_key.pem
