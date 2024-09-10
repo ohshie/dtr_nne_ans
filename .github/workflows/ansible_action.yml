@@ -35,7 +35,7 @@ jobs:
 
       - name: Update service
         run: |
-          ansible-playbook -i inventory master_playbook.yaml
+          ansible-playbook -i inventory master_playbook.yml
         env:
           REPOSITORY_ADDR: "https://${{secrets.ACCESS_TOKEN}}@github.com/${{secrets.REPO_USER}}/${{ secrets.SERVICE_REPO }}"
           WORK_FOLDER: ${{secrets.WORK_FOLDER}}
