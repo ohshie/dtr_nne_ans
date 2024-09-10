@@ -7,9 +7,9 @@
       block:
         - name: Creating New Image
           community.docker.docker_image:
-            name: "{{ lookup('env', 'REPO_NAME') }}"
+            name: "{{ lookup('env', 'DOCKER_NAME') }}"
             build:
-              path: "{{ lookup('env', 'WORK_FOLDER') }}{{ lookup('env', 'REPO_NAME') }}"
+              path: "{{ lookup('env', 'WORK_FOLDER') }}/{{ lookup('env', 'REPO_NAME') }}"
               dockerfile: "{{ lookup('env', 'REPO_NAME') }}/Dockerfile"
               nocache: true
             source: build
