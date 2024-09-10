@@ -1,19 +1,15 @@
+- name: Remove old container and image
 - hosts: all
   become: true
 
   tasks:
     - block:
-        - name: Debug
-          community.general.docker_container:
-            name: dtr_nne
-            state: healthy
-
         - name: Remove Current Container
-          community.general.docker_container:
-            name: "${{lookup('env', 'DOCKER_NAME')}}"
+          community.docker.docker_container:
+            name: "${{ lookup('env', 'DOCKER_NAME') }}"
             state: absent
 
         - name: Remove Current Image
-          community.general.docker_image:
-            name: "${{lookup('env', 'DOCKER_NAME')}}"
+          community.docker.docker_image:
+            name: "${{ lookup('env', 'DOCKER_NAME') }}"
             state: absent

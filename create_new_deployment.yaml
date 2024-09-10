@@ -1,3 +1,4 @@
+- name: Create new image and start container
 - hosts: all
   become: true
 

@@ -1,6 +1,7 @@
+- name: Install docker package playbook
 - hosts: all
   become: true
   tasks:
     - name: Install Docker package
-      apt:
+      ansible.builtin.apt:
         name: docker

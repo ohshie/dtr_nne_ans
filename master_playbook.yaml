@@ -1,6 +1,9 @@
 - name: Setup Docker if it's not installed
   import_playbook: install_docker.yaml
 
+- name: Install collections
+  ansible.builtin.import_playbook: install_collection.yaml
+
 - name: Pull from Git
   import_playbook: pull_changes_from_git.yaml
 

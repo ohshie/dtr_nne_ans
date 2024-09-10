@@ -38,8 +38,8 @@ jobs:
           ansible-playbook master_playbook.yaml
         env:
           REPOSITORY_ADDR: "https://${{secrets.ACCESS_TOKEN}}@github.com/${{secrets.REPO_USER}}/${{ secrets.SERVICE_REPO }}"
-          WORK_FOLDER: "${{secrets.WORK_FOLDER}}"
-          DOCKER_NAME: "${{secrets.DOCKER_NAME}}"
+          WORK_FOLDER: ${{secrets.WORK_FOLDER}}
+          DOCKER_NAME: ${{secrets.DOCKER_NAME}}
           SERVICE_REPO: ${{ secrets.SERVICE_REPO }}
           DOCKER_VOLUME: ${{ secrets.DOCKER_VOLUME }}
           DOCKER_PORTS: ${{secrets.DOCKER_PORTS}}

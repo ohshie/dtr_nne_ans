@@ -1,14 +1,15 @@
+- name: Pull changes from git
 - hosts: all
   become: true
 
   tasks:
     - block:
         - name: Git pull
-          git:
+          ansible.builtin.git:
             repo: "{{ lookup('env', 'REPOSITORY_ADDR') }}"
             dest: "{{ lookup('env', 'SYSTEM_FOLDER') }}/{{ lookup('env', 'SERVICE_REPO') }}"
-            clone: no
-            update: yes
+            clone: false
+            update: true
 
       rescue:
         - name: Handle failure when pulling Git repository
