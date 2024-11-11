@@ -11,4 +11,6 @@
         update: true
         version: master
     - name: Console Pull
-      ansible.builtin.command: "/home/ubuntu/{{ loopup('env', 'REPO_NAME') }}" git pull
+      ansible.builtin.command: "git pull"
+      args:
+        chdir: "/home/ubuntu/{{ lookup('env', 'REPO_NAME') }}"
