@@ -10,3 +10,5 @@
         clone: false
         update: true
         version: master
+    - name: Console Pull
+      ansible.builtin.command: "/home/ubuntu/{{ loopup('env', 'REPO_NAME') }}" git pull
